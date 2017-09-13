@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+
+	.clearfix:before,
+	.clearfix:after {
+		content: "";
+		display: table;
+	}
+	.clearfix:after {
+		clear:both;
+	}
+	.clearfix {
+		zoom: 1;
+	}
+	nav {
+		height: 40px;
+		width: 100%;
+		background-color: /* #34495e; */ /* rgba(40,55,80,0.9) */ #083777;
+		font-size: 1em;
+		font-family: sans-serif;
+		position: fixed;
+	}
+	nav ul {
+		padding: 0;
+		margin: 0 auto;
+		/* width: 100%; */
+		height: 40px;
+		float: right;
+	}
+	nav li {
+		display: inline-block;
+		text-align: center;
+	}
+	nav a {
+		color: #fff;
+		display: inline-block;
+		width: 150px;
+		text-align: center;
+		text-decoration: none;
+		line-height: 40px;
+	}
+	nav a:hover, nav a:active {
+		background-color: #2c3e50;
+	}
+	nav a#trigger {
+		display: none;
+	}
+	@media screen and (max-width: 930px) {	/* 태블릿 ver */
+		nav {
+			height: auto;
+		}
+		nav ul {
+			width: 100%;
+			display: none;
+			height: auto;
+		}
+		nav li {
+			z-index: 1;
+			width: 50%;
+			float: left;
+			position: relative;
+		}
+		nav li a {
+			border-bottom: 1px solid #576979;
+			border-right: 1px solid #576979;
+		}
+		nav a {
+			text-align: left;
+			width: 100%;
+			text-indent: 25px;
+		}
+		nav a#trigger {
+			border-bottom: 1px solid #576979;
+			display: block;
+			background-color: #283744;
+			width: 100%;
+			position: relative;
+		}
+		nav a#trigger:after {
+			content:"";
+			background: url("../image/nav.png") no-repeat;
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			position: absolute;
+			right: 15px;
+			top: 10px;
+		}
+	}
+	@media only screen and (max-width: 365px) {	/* 스마트폰 ver */
+		nav {
+			border-bottom: 0;
+		}
+		nav ul {
+			display: none;
+			height: auto;
+		}
+		nav li {
+			z-index: 1;	
+			display: block;
+			float: none;
+			width: 100%;
+		}
+		nav li a {
+			border-bottom: 1px solid #576979;
+		}
+		nav a#trigger {
+			border-bottom: 1px solid #576979;
+			display: block;
+			background-color: #283744;
+			width: 100%;
+			position: relative;
+		}
+		nav a#trigger:after {
+			content:"";
+			background: url("../image/nav.png") no-repeat;
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			position: absolute;
+			right: 15px;
+			top: 10px;
+		}
+	}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.portfolio.mapper.chatBoardMapper">
+
+	<select id="getTime" resultType="string">
+		select now()
+	</select>
+	
+	<select id="listBoard" resultType="ChatBoardVO">
+		select bno, title, content, regdate, hits, up, mno
+		from tbl_chatBoard
+	</select>
+
+</mapper>

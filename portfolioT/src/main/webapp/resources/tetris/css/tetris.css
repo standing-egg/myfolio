@@ -1,0 +1,23 @@
+/* 
+ * 테트리스 게임의 UI에 대한 스타일
+ */
+
+/* #stage에 relative를  설정해야 handle 레이어가 stage 레이어를 벗어나지 않음 */
+#box {margin: 0 auto; height: 100%; width: 1120px; padding-top: 7em;}
+#stage {position:relative; width:250px; height:500px; border:3px solid; background:#333;}
+.block {width:23px; height:23px; border:1px solid #000; float:left;}
+.none {background: #333}
+/* 부모 요소인 #stage에 relative로 설정이 되었기 때문에 stage를 기준으로 절대좌표를 계산 */
+#handle {position:absolute; top:0; left:0}
+#score {position: absolute; left:280px; width: 100px; height: 50px;
+		border: 2px solid; background: #fff; text-align: center;}
+#time {position: absolute; top:60px; left:280px; width: 100px; height: 50px;
+		border: 2px solid; background: #fff; text-align: center;}
+.whiteLine {margin:1px; border:none}
+.type1 {background:yellow}
+.type2 {background:purple}
+.type3 {background:skyblue}
+.type4 {background:orange}
+.type5 {background:blue}
+.type6 {background:green}
+.type7 {background:red}
