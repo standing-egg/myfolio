@@ -120,7 +120,7 @@ hr, .journal {
 		$("#journalName").change(function(){
 			$("#journalName option:selected").each(function(){
 				var journalName = $(this).val();
-				console.log(journalName);
+				/* console.log(journalName);
 				if (journalName=="1"){
 					link = "http://newspeppermint.com/"
 					$("iframe").attr("src", link);
@@ -130,10 +130,10 @@ hr, .journal {
 				} else {
 					link = "http://www.khan.co.kr/"
 					$("iframe").attr("src", link);					
-				}
+				} */
 				$.ajax({
 				    method: 'post',
-				    url: "/myfolio/news",
+				    url: "/works/news",
 				    headers: {
 				    	"Content-Type": "application/json; charset=UTF-8",
 						"X-HTTP-Mathod-Override": "post"

@@ -78,7 +78,7 @@
 			article = article.replace(/\n/g, " ");
 			$.ajax({
 			    method: 'post',
-			    url: "/myfolio/summary",
+			    url: "/works/summary",
 			    headers: {
 			    	"Content-Type": "application/json",
 					"X-HTTP-Mathod-Override": "POST"

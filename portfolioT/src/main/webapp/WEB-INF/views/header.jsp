@@ -178,12 +178,12 @@ $(document).ready(function(){
 <nav class="clearfix">
 	<a href="#" id="trigger">MENU</a>
 	<ul class="clearfix">
-		<li><a href="main">HOME</a></li>
+		<li><a href="/myfolio/main">HOME</a></li>
 		<li><a href="#">PROFILE</a></li>
-		<li><a href="works">WORKS</a></li>
-		<li><a href="news">NEWS</a></li>
+		<li><a href="/myfolio/works">WORKS</a></li>
+		<li><a href="/myfolio/news">NEWS</a></li>
 		<li><a href="#">SNS</a></li>
-		<li><a href="chatBoard">BOARD</a></li>
+		<li><a href="/myfolio/chatBoard">BOARD</a></li>
 		<!-- <li hidden="true"><a href="#"></a></li> -->
 	</ul>
 </nav>
