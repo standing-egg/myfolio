@@ -49,7 +49,7 @@ a {
 <div id="works-box">
 <div id="card-container">
 	<div class="card">
-		<a href="/myfolio/summary">
+		<a href="/works/summary">
 			<div class="content">
 				<img src="../resources/image/works-summary.JPG" alt="" />
 			</div>
@@ -60,7 +60,7 @@ a {
 		</a>
 	</div>
 	<div class="card">
-		<a href="/myfolio/news">
+		<a href="/works/news">
 			<div class="content">
 				<img src="../resources/image/works-news.JPG" alt="" />
 			</div>
@@ -71,7 +71,7 @@ a {
 		</a>
 	</div>
 	<div class="card">
-		<a href="/myfolio/tetris">
+		<a href="/works/tetris">
 			<div class="content">
 				<img src="../resources/image/works-tetris.JPG" alt="" />
 			</div>

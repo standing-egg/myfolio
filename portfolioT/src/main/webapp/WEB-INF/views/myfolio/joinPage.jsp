@@ -28,7 +28,7 @@ function checkId() {
 	console.log(id);
 	$.ajax({
 	    method: 'post',
-	    url: "/myfolio/checkId",
+	    url: "/join/checkId",
 	    headers: {
 	    	"Content-Type": "application/text",
 			"X-HTTP-Mathod-Override": "POST"
@@ -110,6 +110,7 @@ $(document).ready(function() {
 	$("#join").on("click", function(){
 		var fm = $("form[role='form']");
 		fm.submit();
+		$("form[role='form']")[0].reset();
 	});
 	$("#cancel").on("click", function(){
 		location.href = "/myfolio/main";
@@ -127,7 +128,7 @@ $(document).ready(function() {
 					회원가입 <small>Sign up</small>
 				</h1>
 			</div>
-			<form action="join" method="post" role="form">
+			<form action="/join/submit" method="post" role="form">
 				<div class="form-group">
 					<label for="InputId">아이디</label>
 					<label id="idChecking"></label>
@@ -158,14 +159,14 @@ $(document).ready(function() {
 						class="form-control" name="about" id="about" placeholder="본인에 대한 소개를 입력해주세요">
 				</div>
 			</form>
-				<div class="form-group text-center">
-					<button type="submit" id="join" disabled="disabled" class="btn btn-info">
-						회원가입
-					</button>
-					<button type="button" id="cancel" class="btn btn-warning">
-						가입취소
-					</button>
-				</div>
+			<div class="form-group text-center">
+				<button type="submit" id="join" disabled="disabled" class="btn btn-info">
+					회원가입
+				</button>
+				<button type="button" id="cancel" class="btn btn-warning">
+					가입취소
+				</button>
+			</div>
 		</div>
 
 	</article>
