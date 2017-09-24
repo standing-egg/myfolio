@@ -17,7 +17,7 @@ import com.portfolio.service.NewsService;
 import com.portfolio.service.SummaryService;
 
 @Controller
-@RequestMapping(value = "/works/")
+@RequestMapping(value = "/works/*")
 public class WorksController {
 
 	@Inject
@@ -28,11 +28,6 @@ public class WorksController {
 	@RequestMapping(value = "/worksPage", method = RequestMethod.GET)
 	public String worksPage() throws Exception {
 		return "/myfolio/works/worksPage";
-	}
-	
-	@RequestMapping(value = "/works", method = RequestMethod.GET)
-	public String works() throws Exception {
-		return "forward:/main/works";
 	}
 	
 	@RequestMapping(value = "/summary", method = RequestMethod.GET)

@@ -21,7 +21,7 @@ public class PeppermintCrawler {
 		Elements titles = element.select("h6 a");
 		
 		//for (Element e : titles) {
-		for (int i=0; i<10; i++) {
+		for (int i=0; i<8; i++) {
 			Article article = new Article();
 			article.setJournal("뉴스페퍼민트");
 			article.setJournalLink(link);

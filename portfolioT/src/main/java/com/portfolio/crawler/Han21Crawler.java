@@ -21,12 +21,13 @@ public class Han21Crawler {
 		Element element = doc.select("div.table_home_sub").get(0);
 		Elements titles = element.select(".title1 a:not([href^=https://])");
 
-		for (Element e : titles) {
+		//for (Element e : titles) {
+		for (int i=0; i<8; i++) {
 			Article article = new Article();
 			article.setJournal("한겨레21");
 			article.setJournalLink(link);
-			article.setTitle(e.text());
-			String url = "http://h21.hani.co.kr"+e.getElementsByAttribute("href").attr("href");
+			article.setTitle(titles.get(i).text());
+			String url = "http://h21.hani.co.kr"+titles.get(i).getElementsByAttribute("href").attr("href");
 			article.setHref(url);
 			doc = Jsoup.connect(url).get();
 			Elements content = doc.select("div.text");

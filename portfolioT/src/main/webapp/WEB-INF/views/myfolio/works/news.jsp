@@ -120,8 +120,7 @@ hr, .journal {
 		$("#journalName").change(function(){
 			$("#journalName option:selected").each(function(){
 				var journalName = $(this).val();
-				/* console.log(journalName);
-				if (journalName=="1"){
+				/* if (journalName=="1"){
 					link = "http://newspeppermint.com/"
 					$("iframe").attr("src", link);
 				} else if(journalName=="2") {
@@ -129,7 +128,7 @@ hr, .journal {
 					$("iframe").attr("src", link);
 				} else {
 					link = "http://www.khan.co.kr/"
-					$("iframe").attr("src", link);					
+					$("iframe").attr("src", link);
 				} */
 				$.ajax({
 				    method: 'post',

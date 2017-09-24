@@ -32,11 +32,12 @@ $(document).ready(function(){
 		padding: 0;
 	}
 	html {
-		background: url('../resources/image/yellow.jpg') no-repeat center center fixed;
-		background-size: cover;
 	}
 	body {
-		height: inherit;
+		background: url('../resources/image/minimal2.jpg') no-repeat center center fixed;
+		background-position: bottom;
+		background-size: cover;
+		/* height: inherit; */
 	}
 	/* #typo {
 		z-index: -1;
@@ -180,15 +181,15 @@ $(document).ready(function(){
 	<ul class="clearfix">
 		<li><a href="/myfolio/main">HOME</a></li>
 		<li><a href="#">PROFILE</a></li>
-		<li><a href="/myfolio/works">WORKS</a></li>
-		<li><a href="/myfolio/news">NEWS</a></li>
+		<li><a href="/works/worksPage">WORKS</a></li>
+		<li><a href="/works/news">NEWS</a></li>
 		<li><a href="#">SNS</a></li>
-		<li><a href="/myfolio/chatBoard">BOARD</a></li>
+		<li><a href="/board/chatBoard">BOARD</a></li>
 		<!-- <li hidden="true"><a href="#"></a></li> -->
 	</ul>
 </nav>
 </header>
-<!-- <div id="typo">
-</div> -->
+<div id="typo">
+</div>
 </body>
 </html>

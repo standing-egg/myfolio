@@ -20,12 +20,14 @@ public class KhanCrawler {
 		Element element = doc.select(".mainLeft .clt").get(0);
 		Elements titles = element.select(".hd_title a:not([class=^last])");
 		
-		for (Element e : titles) {
+		//for (Element e : titles) {
+		for (int i = 0; i<titles.size()-1; i++) {
 			Article article = new Article();
 			article.setJournal("경향신문");
 			article.setJournalLink(link);
-			article.setTitle(e.text());
-			String url = e.getElementsByAttribute("href").attr("href");
+			//article.setTitle(e.text());
+			article.setTitle(titles.get(i).text());
+			String url = titles.get(i).getElementsByAttribute("href").attr("href");
 			article.setHref(url);
 			doc = Jsoup.connect(url).get();
 			Elements content = doc.select(".art_body p");

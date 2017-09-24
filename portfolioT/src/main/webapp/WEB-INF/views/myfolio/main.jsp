@@ -15,10 +15,10 @@
 	}
 	html {
 		height: 100%;
-		background: url('../resources/image/bg.png') no-repeat center center fixed;
-		background-size: cover;
 	}
 	body {
+		/* background: url('../resources/image/bg.png') no-repeat center center fixed; */
+		background-size: cover;
 		height: inherit;
 	}
 	
@@ -26,7 +26,7 @@
 		/* z-index: -1; */
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0,0,0,0.2);
+		/* background-color: rgba(0,0,0,0.2); */
 		position: /* absolute */ fixed;
 		display: table;
 	}
@@ -36,7 +36,7 @@
 		position: absolute;
 		top: 30%;
 		left: 25%;
-		color: #fff;
+		color: /* #fff */black;
 		text-align: right;
 	}
 	#text1 {
@@ -62,17 +62,18 @@
 		margin-left: 15px;
 		width: 200px;
 		height: 50px;
-		border: 2px solid #fff;
+		border: 2px solid black;
 		border-style: ridge;
-		color: #fff;
+		color: white;
+		background-color: black;
 		text-align: center;
 		text-decoration: none;
 		font-size: 38px;
 		/* font-weight: bolder; */
 	}
 	.ghost-btn:hover {
-		background-color: #083777;
-		border: 2px solid #083777;
+		background-color: #2c3e50;
+		border: 2px solid #2c3e50;
 	}
 	#mask {
 		position: absolute;
@@ -135,7 +136,7 @@
 
 <div id="typo">
 <div id="sentence">
-	<p id="text1">YOU CAN FIND <br /> A BLUE CHIP</p>
+	<p id="text1">I believe <br /> I can fly</p>
 	<p id="text2">“When asked, ‘How do you write?’ I invariably answer, ‘One word at a time.’”
 		<br /> -Stephen King</p>
 </div>

@@ -35,6 +35,7 @@ public class SummaryService {
 			//System.out.println("senten: "+i+" : "+sentences.get(i).getText());
 			sumAticle.add(i+1+") "+sentences.get(i).getText()+".<br/><br/>");
 			//System.out.println(sentences.get(i).getText());
+			//System.out.println(sumAticle.get(i));
 		}
 		
 		return sumAticle;

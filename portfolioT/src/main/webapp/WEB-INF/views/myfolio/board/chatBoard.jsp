@@ -1,30 +1,209 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-.container_box {
-	margin: 5em auto;
-	width: 70%;
-	border: 1px solid black;
-	background-color: white;
+.content {
+	width: 80%;
+	margin: 0 auto;
+	padding: 3%;
+	padding-bottom: 0;
 }
-.category_box {
-	
+.box-body {
+	background-color: /* #b3b3b3 */white;
 }
-.category
+.tab-box {
+	margin: 1em 0 1em 0;
+}
+.searchType {
+	height: 2em;
+}
+th, tr>td {
+	text-align: center;
+	font-weight: bold;
+}
+a {
+	color: black;
+}
+#writing-box {
+	width: 80%;
+	margin: 1em auto;
+}
 </style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#writeBtn").click(function(){
+		$("#writing-box").load("writePage");
+	});
+})
+$(document).on("click", "#write", function(){
+	var fm = $("form[role='form']");
+	fm.submit();
+	$("form[role='form']")[0].reset();
+});
+$(document).on("click", "#cancel", function(){
+	location.href = "/board/chatBoard";
+});
+$(document).on("click", ".reading", function(){
+	var href = $(this).attr("value");
+	$("#writing-box").load(href);	
+});
+</script>
 </head>
 <body>
-	<div class="container_box">
-		<div class="category_box"></div>
-		<div class="head_box"></div>
-		<div class="content_box"></div>
+<div class="content">
+	<div class="container">
+	
+		<div class="tab-box">
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active"><a href="#">잡담 게시판</a></li>
+				<li role="presentation"><a href="#">질문 게시판</a></li>
+				<li role="presentation"><a href="#">문제 게시판</a></li>
+			</ul>
+		</div>
+		<div id="writing-box" class="box">
+		</div>
+		
+		<div class='box'>
+			<div class="box-header with-border">
+			</div>
+			
+			<div class='box'>
+				<span style="font-size: 1.5em">Search Board</span>
+				<select name="searchType" class="searchType">
+					<option value="n"
+						<c:out value="${cri.searchType == null ? 'selected' : '' }"/>>
+					---</option>
+					<option value="t"
+						<c:out value="${cri.searchType eq 't' ? 'selected' : '' }"/>>
+					Title</option>
+					<option value="c"
+						<c:out value="${cri.searchType eq 'c' ? 'selected' : '' }"/>>
+					Content</option>
+					<option value="w"
+						<c:out value="${cri.searchType eq 'w' ? 'selected' : '' }"/>>
+					Writer</option>
+					<option value="tc"
+						<c:out value="${cri.searchType eq 'tc' ? 'selected' : '' }"/>>
+					Title OR Content</option>
+					<option value="cw"
+						<c:out value="${cri.searchType eq 'cw' ? 'selected' : '' }"/>>
+					Content OR Writer</option>
+					<option value="tcw"
+						<c:out value="${cri.searchType eq 'tcw' ? 'selected' : '' }"/>>
+					Title OR Content OR Writer</option>
+				</select>
+				<input type="text" name="keyword" class="searchType" id="keywordInput" value="${cri.keyword }" />
+				<button id="searchBtn" class="searchType">Search</button>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="box-header with-border">
+				<h3 class="box-title">LIST PAGE</h3>
+			</div>
+			<div class="box-body">
+				<table class="table table-hover">
+					<tr>
+						<th style="width: 5%">NO</th>
+						<th style="width: 20%">TITLE</th>
+						<th style="width: 35%">CONTENT</th>
+						<th style="width: 10%">WRITER</th>
+						<th>REGDATE</th>
+						<th style="width: 5%">HITS</th>
+						<th style="width: 5%">good</th>
+					</tr>
+					<c:forEach items="${list}" var="boardVO">
+						<tr>
+							<td>${boardVO.bno}</td>
+							<td>
+								<a href='#' value="/board/readPage&bno=${boardVO.bno}" class="reading">
+									<c:choose>
+										<c:when test="${fn:length(boardVO.title)>13 }">
+											${fn:substring(boardVO.title, 0, 12)}
+										</c:when>
+										<c:otherwise>
+											${boardVO.title}
+										</c:otherwise>
+									</c:choose>
+								</a>
+							</td>
+							<td>
+								<a href='#' value="/board/readPage&bno=${boardVO.bno}" class="reading">
+									<c:choose>
+										<c:when test="${fn:length(boardVO.content)>21 }">
+											${fn:substring(boardVO.content, 0, 20)}...
+										</c:when>
+										<c:otherwise>
+											${boardVO.content}
+										</c:otherwise>
+									</c:choose>
+								</a>
+							</td>
+							<td>${boardVO.writer }</td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+									value="${boardVO.regdate}" /></td>
+							<td><span class="badge bg-red">${boardVO.hits }</span></td>
+							<td><span class="badge bg-red">${boardVO.up }</span></td>
+						</tr>
+
+					</c:forEach>
+				</table>
+			</div>
+			<!-- /.box-body -->
+
+			<div class="box-footer">
+			
+				<div class="text-center">
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li>
+								<a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">
+									&laquo;
+								</a>
+							</li>
+						</c:if>
+
+						<c:forEach begin="${pageMaker.startPage }"
+							end="${pageMaker.endPage }" var="idx">
+							<li
+								<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+								<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+							</li>
+						</c:forEach>
+
+						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+							<li>
+								<a href="list${pageMaker.makeSearch(pageMaker.endPage +1)}">
+									&raquo;
+								</a>
+							</li>
+						</c:if>
+					</ul>
+					<button id="writeBtn" class="btn btn-primary pull-right">Writing</button>
+				</div>					
+				
+			</div>
+			<!-- /.box-footer-->
+		</div>
 	</div>
+</div>
+<!-- /.content -->
+
 </body>
 </html>
