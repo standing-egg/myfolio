@@ -84,10 +84,10 @@ $(document).ready(function(){
 		display: inline-block;
 		width: 150px;
 		text-align: center;
-		text-decoration: none;
 		line-height: 40px;
 	}
 	nav a:hover, nav a:active {
+		text-decoration: none;
 		background-color: #2c3e50;
 	}
 	nav a#trigger {

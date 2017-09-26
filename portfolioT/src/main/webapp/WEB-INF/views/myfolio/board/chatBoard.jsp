@@ -17,15 +17,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../resources/board/css/board.css" >
 <style type="text/css">
-.content {
+/* .content {
 	width: 80%;
 	margin: 0 auto;
 	padding: 3%;
 	padding-bottom: 0;
 }
 .box-body {
-	background-color: /* #b3b3b3 */white;
+	background-color: white;
 }
 .tab-box {
 	margin: 1em 0 1em 0;
@@ -41,14 +42,17 @@ a {
 	color: black;
 }
 #writing-box {
-	width: 80%;
 	margin: 1em auto;
 }
+.reading {
+	cursor: pointer;
+} */
 </style>
-<script type="text/javascript">
-$(document).ready(function(){
+<script src="../resources/board/js/board.js" defer="defer">
+/* $(document).ready(function(){
 	$("#writeBtn").click(function(){
 		$("#writing-box").load("writePage");
+		$('html, body').stop().animate({ scrollTop : 0 });
 	});
 })
 $(document).on("click", "#write", function(){
@@ -61,8 +65,18 @@ $(document).on("click", "#cancel", function(){
 });
 $(document).on("click", ".reading", function(){
 	var href = $(this).attr("value");
-	$("#writing-box").load(href);	
+	$("#content").remove();
+	$("#writing-box").load(href);
+	//href = href.replace(/\#content/ig, "");
+	history.pushState(href, null, href.replace(/\#content/ig, ""));
+	$('html, body').stop().animate({ scrollTop : 0 });
 });
+$(window).on('popstate', function(event) {
+	$("#content").remove();
+	var data = event.originalEvent.state;
+    $("#writing-box").load(data);
+	$('html, body').stop().animate({ scrollTop : 0 });
+}); */
 </script>
 </head>
 <body>
@@ -113,7 +127,7 @@ $(document).on("click", ".reading", function(){
 			</div>
 		</div>
 		
-		<div class="box">
+		<div class="box" id="list">
 			<div class="box-header with-border">
 				<h3 class="box-title">LIST PAGE</h3>
 			</div>
@@ -132,7 +146,8 @@ $(document).on("click", ".reading", function(){
 						<tr>
 							<td>${boardVO.bno}</td>
 							<td>
-								<a href='#' value="/board/readPage&bno=${boardVO.bno}" class="reading">
+								<a value="/board/readPage&bno=${boardVO.bno} #content" class="reading"
+									style="text-decoration: none;">
 									<c:choose>
 										<c:when test="${fn:length(boardVO.title)>13 }">
 											${fn:substring(boardVO.title, 0, 12)}
@@ -144,7 +159,8 @@ $(document).on("click", ".reading", function(){
 								</a>
 							</td>
 							<td>
-								<a href='#' value="/board/readPage&bno=${boardVO.bno}" class="reading">
+								<a value="/board/readPage&bno=${boardVO.bno} #content" class="reading"
+									style="text-decoration: none;">
 									<c:choose>
 										<c:when test="${fn:length(boardVO.content)>21 }">
 											${fn:substring(boardVO.content, 0, 20)}...
@@ -172,28 +188,28 @@ $(document).on("click", ".reading", function(){
 				<div class="text-center">
 					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
-							<li>
-								<a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">
-									&laquo;
-								</a>
-							</li>
-						</c:if>
-
-						<c:forEach begin="${pageMaker.startPage }"
-							end="${pageMaker.endPage }" var="idx">
-							<li
-								<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-								<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-							</li>
-						</c:forEach>
-
-						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							<li>
-								<a href="list${pageMaker.makeSearch(pageMaker.endPage +1)}">
-									&raquo;
-								</a>
-							</li>
-						</c:if>
+				            <li>
+				                <a href="chatBoard?page=${pageMaker.startPage - 1 }">
+				                    &laquo;
+				                </a>
+				            </li>
+				        </c:if>
+				 
+				        <c:forEach begin="${pageMaker.startPage }"
+				        end="${pageMaker.endPage }" var="idx">
+				            <li
+				                <c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+				                <a href="chatBoard?page=${idx}">${idx}</a>
+				            </li>
+				        </c:forEach>
+				 
+				        <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+				            <li>
+				                <a href="chatBoard?page=${pageMaker.endPage +1 }">
+				                    &raquo;
+				                </a>
+				            </li>
+				        </c:if>
 					</ul>
 					<button id="writeBtn" class="btn btn-primary pull-right">Writing</button>
 				</div>					

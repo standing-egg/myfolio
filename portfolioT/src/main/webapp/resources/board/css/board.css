@@ -1,0 +1,37 @@
+.form-control {
+	background-color: white;
+}
+.content-info {
+	margin-right: 2em;
+}
+#text {
+	padding: 1em;
+}
+.content {
+	width: 80%;
+	margin: 0 auto;
+	padding: 3%;
+	padding-bottom: 0;
+}
+.box-body {
+	background-color: white;
+}
+.tab-box {
+	margin: 1em 0 1em 0;
+}
+.searchType {
+	height: 2em;
+}
+th, tr>td {
+	text-align: center;
+	font-weight: bold;
+}
+a {
+	color: black;
+}
+#writing-box {
+	margin: 1em auto;
+}
+.reading {
+	cursor: pointer;
+}

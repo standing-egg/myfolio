@@ -14,9 +14,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-#container {
+/* #container {
 	margin: 3%;
-}
+} */
 </style>
 <!-- <script type="text/javascript">
 $(document).ready(function() {

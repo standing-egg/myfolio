@@ -5,6 +5,12 @@ public class Criteria {
 	private int page;
 	private int perPageNum;
 	
+	public Criteria() {
+		// 초기값
+		this.page = 1;
+		this.perPageNum = 10;
+	}
+	
 	public void setPage(int page) {
 		if(page <= 0) {
 			this.page = 1;
@@ -26,6 +32,16 @@ public class Criteria {
 	}
 	
 	public int getPageStart() {
-		return (this.page - 1) 
+		return (this.page - 1) * perPageNum;
 	}
+	
+	public int getPerPageNum() {
+		return this.perPageNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
+	}
+	
 }

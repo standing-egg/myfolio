@@ -26,6 +26,18 @@
 		where bno = #{bno}
 	</select>
 	
+	<update id="readCnt">
+		update tbl_chatBoard
+		set hits = hits +1
+		where bno = #{bno}
+	</update>
+	
+	<update id="upCnt">
+		update tbl_chatBoard
+		set up = up +1
+		where bno = #{bno}
+	</update>
+	
 	<update id="update">
 		update tbl_chatBoard 
 		set title=#{title}, content=#{content}
@@ -44,6 +56,24 @@
 			where bno > 0
 			order by bno desc, regdate desc
 			limit #{page}, 10
+		]]>
+	</select>
+
+	<select id="listCriteria" resultType="BoardVO">
+		<![CDATA[
+			select bno, title, writer, content, regdate, hits, up
+			from tbl_chatBoard
+			where bno > 0
+			order by bno desc, regdate desc
+			limit #{pageStart}, #{perPageNum}
+		]]>
+	</select>
+	
+	<select id="countPaging" resultType="int">
+		<![CDATA[
+			select count(bno)
+			from tbl_chatBoard
+			where bno > 0
 		]]>
 	</select>
 
