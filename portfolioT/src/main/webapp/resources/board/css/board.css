@@ -7,6 +7,18 @@
 #text {
 	padding: 1em;
 }
+#toList {
+	display: inline-block;
+	position: relative;
+	float: right;
+	width: 3em;
+	height: 1.5em;
+	border: 1px solid black;
+	color: white;
+	background-color: black;
+	text-align: center;
+	cursor: pointer;
+}
 .content {
 	width: 80%;
 	margin: 0 auto;
@@ -15,6 +27,9 @@
 }
 .box-body {
 	background-color: white;
+}
+.box-footer {
+	margin: 1em;
 }
 .tab-box {
 	margin: 1em 0 1em 0;

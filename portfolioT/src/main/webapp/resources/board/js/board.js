@@ -34,14 +34,19 @@ $(document).on("click", "#write", function(){
 $(document).on("click", "#cancel", function(){
 	location.href = "/board/chatBoard";
 });
-
+$(document).on("click", "#toList", function(){
+	var form = $("form[role='form']");
+	form.attr("method", "get");
+	form.attr("action", "/board/chatBoard");
+	form.submit();
+});
 $(document).on("click", ".reading", function(){
 	var href = $(this).attr("value");
 	$("#content").remove();
 	$("#writing-box").load(href);
 	//href = href.replace(/\#content/ig, "");
 	history.pushState(href, null, href.replace(/\#content/ig, ""));
-	$('html, body').stop().animate({ scrollTop : 0 });
+	$('html, body').animate({ scrollTop : 0 });
 });
 $(window).on('popstate', function(event) {
 	$("#content").remove();

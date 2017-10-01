@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,8 +49,10 @@ public class BoardController {
 		return "redirect:/board/chatBoard";
 	}
 	
-	@RequestMapping(value = "/readPage&bno={bno}", method = RequestMethod.GET)
-	public String readPage(@PathVariable("bno") int bno, Criteria cri, Model model) throws Exception {
+	@RequestMapping(value = "/readPage", method = RequestMethod.GET)
+	public String readPage(
+	@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model)
+	throws Exception {
 		/*PageMaker pageMaker = new PageMaker();
 		pageMaker.setCriteria(cri);
 		pageMaker.setTotalCount(chatService.listCountCriteria(cri));
@@ -66,7 +69,6 @@ public class BoardController {
 	public ResponseEntity<Integer> upCnt(@RequestBody int bno) throws Exception {
 		chatService.upCnt(bno);
 		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(chatService.read(bno).getUp(), HttpStatus.OK) ;
-		
 		return entity;
 	}
 }

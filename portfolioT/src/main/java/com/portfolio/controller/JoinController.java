@@ -22,7 +22,6 @@ public class JoinController {
 	
 	@RequestMapping(value = "/joinPage", method = RequestMethod.GET)
 	public String registerGET() throws Exception {
-		System.out.println("aaa");
 		return "/myfolio/joinPage";
 	}
 	

@@ -1,5 +1,8 @@
 package com.portfolio.domain;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
 
 	private int totalCount;
@@ -10,10 +13,10 @@ public class PageMaker {
 	private int displayPageNum = 10;
 	private Criteria cri;
 	
-	public void setCriteria(Criteria cri) {
-		this.cri = cri;
+	public int getTotalCount() {
+		return totalCount;
 	}
-	
+
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 		calcData();
@@ -39,10 +42,6 @@ public class PageMaker {
 		this.displayPageNum = displayPageNum;
 	}
 
-	public int getTotalCount() {
-		return totalCount;
-	}
-
 	public int getStartPage() {
 		return startPage;
 	}
@@ -63,6 +62,10 @@ public class PageMaker {
 		return cri;
 	}
 
+	public void setCriteria(Criteria cri) {
+		this.cri = cri;
+	}
+	
 	@Override
 	public String toString() {
 		return "PageMaker [totalCount=" + totalCount
@@ -72,6 +75,14 @@ public class PageMaker {
 				+ ", next=" + next 
 				+ ", displayPageNum=" + displayPageNum 
 				+ ", cri=" + cri + "]";
+	}
+	
+	public String makeQuery(int page) throws Exception{
+		UriComponents uriComponents =
+				UriComponentsBuilder.newInstance()
+				.queryParam("page", page).build();
+		
+		return uriComponents.toString();
 	}
 	
 }

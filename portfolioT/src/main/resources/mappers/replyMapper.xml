@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.portfolio.mapper.ReplyMapper">
+	
+	<select id="rList" resultType="ReplyVO">
+		select *
+		from tbl_reply
+		where bno=#{bno}
+		order by rorder desc
+	</select>
+	
+	<insert id="rCreate">
+		insert into tbl_reply (rno, bno, mno, rtext, rorder, parent)
+		values (#{rno}, #{bno}, #{mno}, #{rtext}, #{rorder}, #{parent})
+	</insert>
+	
+	<update id="rUpdate">
+		update tbl_reply set rtext=#{rtext}, updatedate= now()
+		where rno = #{rno}
+	</update>
+	
+	<delete id="delete">
+		delete from tbl_reply
+		where rno = #{rno}
+	</delete>
+	
+</mapper>

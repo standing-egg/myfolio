@@ -127,16 +127,17 @@ $(window).on('popstate', function(event) {
 				<span class="content-info">
 					주소 <strong>/board/readPage&bno=${boardVO.bno}</strong>
 				</span>
+				<span id="toList">목록</button>
 			</p>
 			<!-- /.box-header -->
 	
 			<form role="form" method="post">
 	
-				<input type='hidden' name='bno' value="${boardVO.bno}">
 				<input type='hidden' name="page" value="${cri.page }" />
-				<input type="hidden" name="perPageNum" value="${cri.perPageNum }" />
+				<input type='hidden' name='bno' value="${boardVO.bno}">
+				<%-- <input type="hidden" name="perPageNum" value="${cri.perPageNum }" />
 				<input type="hidden" name="searchType" value="${cri.searchType}">
-				<input type="hidden" name="keyword" value="${cri.keyword }">
+				<input type="hidden" name="keyword" value="${cri.keyword }"> --%>
 	
 			</form>
 	
@@ -151,10 +152,9 @@ $(window).on('popstate', function(event) {
 			<!-- /.box-body -->
 	
 			<div class="box-footer">
-				<button type="submit" class="btn btn-warning">Modify</button>
-				<button type="submit" class="btn btn-danger">REMOVE</button>
-				<button type="submit" class="btn btn-primary">LIST PAGE</button>
-				<button type="submit" class="btn btn-default" id="upBtn">
+				<button type="submit" class="btn btn-warning" id="modify">수정</button>
+				<button type="submit" class="btn btn-danger" id="remove">삭제</button>
+				<button type="submit" class="btn btn-primary" id="upBtn">
 					추천 <span class="glyphicon glyphicon-thumbs-up"></span>
 				</button>				
 			</div>

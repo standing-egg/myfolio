@@ -16,8 +16,8 @@
 	</select>
 	
 	<insert id="writing">
-		insert into tbl_chatBoard (title, writer, content) 
-		values (#{title}, #{writer}, #{content}) 
+		insert into tbl_chatBoard (title, writer, content, hits, up) 
+		values (#{title}, #{writer}, #{content}, 0, 0) 
 	</insert>
 	
 	<select id="read" resultType="BoardVO">

@@ -146,7 +146,7 @@ $(window).on('popstate', function(event) {
 						<tr>
 							<td>${boardVO.bno}</td>
 							<td>
-								<a value="/board/readPage&bno=${boardVO.bno} #content" class="reading"
+								<a value="/board/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&bno=${boardVO.bno} #content" class="reading"
 									style="text-decoration: none;">
 									<c:choose>
 										<c:when test="${fn:length(boardVO.title)>13 }">
@@ -159,7 +159,7 @@ $(window).on('popstate', function(event) {
 								</a>
 							</td>
 							<td>
-								<a value="/board/readPage&bno=${boardVO.bno} #content" class="reading"
+								<a value="/board/readPage${pageMaker.makeQuery(pageMaker.cri.page)}&bno=${boardVO.bno} #content" class="reading"
 									style="text-decoration: none;">
 									<c:choose>
 										<c:when test="${fn:length(boardVO.content)>21 }">
@@ -182,7 +182,7 @@ $(window).on('popstate', function(event) {
 				</table>
 			</div>
 			<!-- /.box-body -->
-
+			
 			<div class="box-footer">
 			
 				<div class="text-center">
